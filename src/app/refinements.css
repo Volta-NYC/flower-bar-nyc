@@ -1,0 +1,26 @@
+/* Keep business photography unmasked and at each file's original aspect ratio. */
+.photo-frame{position:relative;overflow:hidden;border:1px solid var(--ink);border-radius:0;box-shadow:none}
+.photo-frame img{object-fit:cover}
+.hero-visual{height:auto}
+.hero-frame{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:640/427;box-shadow:none}
+.image-caption{margin:10px 0 0;padding-top:9px;border-top:1px solid var(--ink);font:9px/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.story-photo{height:auto;aspect-ratio:522/348;border-radius:0;box-shadow:none}
+.palette-photo{height:auto;aspect-ratio:480/320;border-radius:0;box-shadow:none}
+.about-hero-photo{height:auto;aspect-ratio:522/348;border-radius:0;box-shadow:none}
+.about-cta>.photo-frame{width:100%;height:auto;aspect-ratio:640/427;box-shadow:none}
+.services-hero::after{display:none}
+
+@media(max-width:800px){
+  .site-header{height:72px}
+  .site-header::after{left:22px}
+  .section-deck{font-size:17px}
+  .text-section-heading{margin-bottom:48px}
+  .text-section-heading .section-deck{margin:18px 0 0;padding-left:15px}
+  .form-heading{display:block}
+  .form-heading p{margin-top:10px}
+  .hero-visual,.story-photo,.palette-photo,.about-hero-photo{height:auto}
+  .hero-frame{height:auto;aspect-ratio:640/427}
+  .story-photo,.about-hero-photo{aspect-ratio:522/348}
+  .palette-photo{aspect-ratio:480/320}
+  .about-cta>.photo-frame{height:auto;aspect-ratio:640/427;justify-self:center}
+}
