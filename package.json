@@ -1,0 +1,19 @@
+{
+  "name": "flower-bar-nyc",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "dev": "next dev", "build": "next build", "lint": "eslint ." },
+  "dependencies": {
+    "next": "^16.2.5",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.6.0",
+    "@types/react": "^19.2.14",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.5",
+    "typescript": "^5.0.0"
+  }
+}
