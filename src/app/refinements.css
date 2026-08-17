@@ -9,6 +9,20 @@
 .about-hero-photo{height:auto;aspect-ratio:522/348;border-radius:0;box-shadow:none}
 .about-cta>.photo-frame{width:100%;height:auto;aspect-ratio:640/427;box-shadow:none}
 .services-hero::after{display:none}
+.service-note>div>p{font:10px var(--mono);letter-spacing:.09em;text-transform:uppercase}
+
+/* One shared motion system: lightweight, consistent, and progressive. */
+.reveal{animation:none!important}
+.motion-ready .reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity .62s ease,transform .68s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms);will-change:opacity,transform}
+.motion-ready .reveal.is-visible{opacity:1;transform:translate3d(0,0,0);will-change:auto}
+.motion-ready .delay-one{--reveal-delay:90ms}
+.motion-ready .delay-two{--reveal-delay:170ms}
+.site-header{animation:header-in .55s cubic-bezier(.22,1,.36,1) both}
+.photo-frame img{transition:transform .75s cubic-bezier(.22,1,.36,1)}
+.service-row svg,.text-link svg,.contact-links svg{transition:transform .25s ease}
+@keyframes header-in{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@media(hover:hover){.photo-frame:hover img{transform:scale(1.025)}.service-row:hover>svg,.text-link:hover svg{transform:translate(3px,-2px)}.contact-links a:hover svg{transform:translateX(3px)}}
+@media(prefers-reduced-motion:reduce){.site-header{animation:none}.motion-ready .reveal{opacity:1;transform:none;transition:none}.photo-frame img,.service-row svg,.text-link svg,.contact-links svg{transition:none}.photo-frame:hover img{transform:none}}
 
 @media(max-width:800px){
   .site-header{height:72px}

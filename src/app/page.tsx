@@ -18,13 +18,13 @@ export default function Home() {
         <div className="photo-frame hero-frame"><Image src="/images/flowerbar-hero.jpg" alt="A colorful Flower Bar NYC arrangement" fill priority sizes="(max-width: 800px) 92vw, 48vw"/></div>
         <p className="image-caption">Original Flower Bar NYC arrangement · Seasonal stems, arranged daily</p>
       </div>
-      <div className="hero-details"><span>Made in Manhattan</span><span>Delivered daily</span><span>Designed with feeling</span></div>
+      <div className="hero-details reveal delay-two"><span>Made in Manhattan</span><span>Delivered daily</span><span>Designed with feeling</span></div>
     </section>
 
     <section className="statement curved-top">
       <p className="kicker reveal">Our way of doing flowers</p>
       <div className="statement-grid"><h2 className="reveal">We skip the catalog.</h2><p className="reveal delay-one">Every arrangement starts with a feeling—not a product number. Choose your palette, share your budget, and leave room for a little magic.</p></div>
-      <div className="ticker" aria-label="Flower Bar qualities"><span>Fresh-picked</span><Heart size={18}/><span>Catalog-free</span><Heart size={18}/><span>Made for you</span><Heart size={18}/><span>Manhattan delivery</span></div>
+      <div className="ticker reveal" aria-label="Flower Bar qualities"><span>Fresh-picked</span><Heart size={18}/><span>Catalog-free</span><Heart size={18}/><span>Made for you</span><Heart size={18}/><span>Manhattan delivery</span></div>
     </section>
 
     <section className="service-preview section-pad">

@@ -23,5 +23,5 @@ export default function Services() { return <PageShell>
     <div className="pricing-intro reveal"><p className="kicker">03 · Choose the gesture</p><h2>Every size,<br/><i>made special.</i></h2><p>A matching vase can be added from $10. NYC sales tax applies; Manhattan delivery starts at $15.</p><a className="text-link" href="https://drive.google.com/file/d/1zhEjkFAdtE7441UgCslTvlqh4BVbyk3X/view?usp=sharing" target="_blank" rel="noreferrer">View the full pricing chart <ArrowUpRight size={16}/></a></div>
     <div className="price-list reveal delay-one">{sizes.map(([size,price])=><div key={size}><span>{size}</span><b>{price}</b></div>)}<Link className="button" href="/contact">Get a quote <ArrowUpRight size={16}/></Link></div>
   </section>
-  <section className="service-note"><p>Not sure what to choose?</p><h2>Tell us the occasion. <i>We’ll guide you.</i></h2><Link className="button button-light" href="/contact">Start an order <ArrowUpRight size={16}/></Link></section>
+  <section className="service-note"><div className="reveal"><p>Not sure what to choose?</p><h2>Tell us the occasion. <i>We’ll guide you.</i></h2><Link className="button button-light" href="/contact">Start an order <ArrowUpRight size={16}/></Link></div></section>
   </PageShell> }

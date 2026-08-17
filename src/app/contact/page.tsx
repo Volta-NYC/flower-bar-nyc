@@ -8,5 +8,5 @@ export default function Contact() { return <PageShell>
     <div className="contact-info reveal"><p className="kicker">Flower Bar NYC</p><h2>We’d love to hear <i>your idea.</i></h2><div className="contact-links"><a href="tel:+15715058925"><Phone/><span><small>Call</small>(571) 505-8925</span></a><a href="https://www.google.com/maps/dir//516a+3rd+Ave,+New+York,+NY" target="_blank" rel="noreferrer"><MapPin/><span><small>Find us</small>516A 3rd Avenue<br/>New York, NY</span></a><a href="https://www.instagram.com/flowerbar.nyc/" target="_blank" rel="noreferrer"><Camera/><span><small>Follow</small>@flowerbar.nyc</span></a></div></div>
     <div className="form-wrap reveal delay-one"><div className="form-heading"><span>Order inquiry</span><p>Share a few details and we’ll continue the conversation by email.</p></div><ContactForm/></div>
   </section>
-  <section className="contact-bottom"><p>Daily Designer’s Choice</p><span>·</span><p>NYU Hospital Delivery</p><span>·</span><p>Manhattan-Wide Delivery</p><span>·</span><p>Events & Celebrations</p></section>
+  <section className="contact-bottom reveal"><p>Daily Designer’s Choice</p><span>·</span><p>NYU Hospital Delivery</p><span>·</span><p>Manhattan-Wide Delivery</p><span>·</span><p>Events & Celebrations</p></section>
   </PageShell> }
