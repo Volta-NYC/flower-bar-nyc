@@ -14,7 +14,7 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const previousRef = useRef<HTMLButtonElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
-  const doubledImages = useMemo(() => [...images, ...images], [images]);
+  const loopedImages = useMemo(() => [...images, ...images, ...images], [images]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -30,14 +30,11 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
     let cardDistance = 390;
     let loopWidth = cardDistance * images.length;
     let currentX = 0;
-    let targetX = 0;
     let animationId = 0;
-    let isHovering = false;
     let isTouching = false;
-    let pauseUntil = 0;
     let touchStartX = 0;
     let touchStartY = 0;
-    let touchStartTarget = 0;
+    let touchStartXPosition = 0;
     let isHorizontalSwipe = false;
 
     const measure = () => {
@@ -50,6 +47,10 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
       const marginRight = parseFloat(styles.marginRight || "0");
       cardDistance = firstCard.offsetWidth + marginRight;
       loopWidth = cardDistance * images.length;
+
+      if (currentX === 0) {
+        currentX = loopWidth;
+      }
     };
 
     const normalize = () => {
@@ -57,25 +58,22 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
         return;
       }
 
-      while (targetX >= loopWidth) targetX -= loopWidth;
-      while (targetX < 0) targetX += loopWidth;
-      while (currentX >= loopWidth) currentX -= loopWidth;
-      while (currentX < 0) currentX += loopWidth;
+      while (currentX >= loopWidth * 2) currentX -= loopWidth;
+      while (currentX < loopWidth) currentX += loopWidth;
     };
 
     const nudge = (amount: number) => {
-      targetX += amount;
-      pauseUntil = performance.now() + 900;
+      currentX += amount;
       normalize();
+      track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
     };
 
     const animate = () => {
-      if (!reducedMotion && !isHovering && !isTouching && performance.now() > pauseUntil) {
-        targetX += 0.32;
+      if (!reducedMotion && !isTouching) {
+        currentX += 0.38;
       }
 
       normalize();
-      currentX += (targetX - currentX) * 0.08;
       track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
       animationId = requestAnimationFrame(animate);
     };
@@ -85,19 +83,11 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
       nudge(event.deltaY || event.deltaX);
     };
 
-    const onPointerEnter = () => {
-      isHovering = true;
-    };
-
-    const onPointerLeave = () => {
-      isHovering = false;
-    };
-
     const onTouchStart = (event: TouchEvent) => {
       isTouching = true;
       touchStartX = event.touches[0]?.clientX ?? 0;
       touchStartY = event.touches[0]?.clientY ?? 0;
-      touchStartTarget = targetX;
+      touchStartXPosition = currentX;
       isHorizontalSwipe = false;
     };
 
@@ -112,23 +102,22 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
       }
 
       isHorizontalSwipe = true;
-      targetX = touchStartTarget + deltaX;
+      currentX = touchStartXPosition + deltaX;
       normalize();
+      track.style.transform = `translate3d(${-currentX}px, 0, 0)`;
     };
 
     const onTouchEnd = () => {
       isTouching = false;
-      pauseUntil = performance.now() + 900;
     };
 
     const onPrevious = () => nudge(-cardDistance);
     const onNext = () => nudge(cardDistance);
 
     measure();
+    normalize();
     window.addEventListener("resize", measure);
     wrap.addEventListener("wheel", onWheel, { passive: false });
-    wrap.addEventListener("pointerenter", onPointerEnter);
-    wrap.addEventListener("pointerleave", onPointerLeave);
     wrap.addEventListener("touchstart", onTouchStart, { passive: true });
     wrap.addEventListener("touchmove", onTouchMove, { passive: true });
     wrap.addEventListener("touchend", onTouchEnd);
@@ -140,8 +129,6 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", measure);
       wrap.removeEventListener("wheel", onWheel);
-      wrap.removeEventListener("pointerenter", onPointerEnter);
-      wrap.removeEventListener("pointerleave", onPointerLeave);
       wrap.removeEventListener("touchstart", onTouchStart);
       wrap.removeEventListener("touchmove", onTouchMove);
       wrap.removeEventListener("touchend", onTouchEnd);
@@ -170,7 +157,7 @@ export function SpinGallery({ images }: { images: GalleryImage[] }) {
 
       <div className="spin-gallery-track-wrap reveal delay-one" ref={wrapRef}>
         <div className="spin-gallery-track" ref={trackRef}>
-          {doubledImages.map((image, index) => (
+          {loopedImages.map((image, index) => (
             <figure aria-hidden={index >= images.length} className="spin-gallery-card" key={`${image.src}-${index}`}>
               <Image alt={index < images.length ? image.alt : ""} fill sizes="(max-width: 800px) 78vw, 380px" src={image.src} />
             </figure>

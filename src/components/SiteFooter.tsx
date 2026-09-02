@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Camera } from "lucide-react";
+import { MadeByNovus } from "@/components/MadeByNovus";
 
 export function SiteFooter() {
   return <footer className="site-footer">
@@ -14,6 +15,9 @@ export function SiteFooter() {
       <div><b>Talk to us</b><a href="tel:+15715058925">(571) 505-8925</a><a href="https://www.instagram.com/flowerbar.nyc/" target="_blank" rel="noreferrer"><Camera size={14}/> @flowerbar.nyc</a></div>
       <div><b>Explore</b><Link href="/services">Services</Link><Link href="/about">Our story</Link><Link href="/contact">Get a quote</Link></div>
     </div>
-    <p className="footer-note reveal delay-two">Custom, seasonal floral design · Daily delivery across Manhattan</p>
+    <div className="footer-bottom-line reveal delay-two">
+      <p className="footer-note">Custom, seasonal floral design · Daily delivery across Manhattan</p>
+      <MadeByNovus />
+    </div>
   </footer>;
 }
