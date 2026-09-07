@@ -54,7 +54,7 @@ const testimonials = [
 export default function Home() {
   return <PageShell>
     <section className="home-hero">
-      <div className="hero-copy reveal"><p className="kicker">Custom floral design · Murray Hill</p><h1>We’ll design a <i>beautiful surprise.</i></h1><p>Just pick your palette and budget. Sherry will turn the day’s freshest stems into something entirely your own.</p><div className="button-row"><Link className="button" href="/contact">Schedule flower delivery <ArrowUpRight size={16}/></Link><Link className="round-link" href="/services" aria-label="Explore services"><ArrowDownRight size={21}/></Link></div></div>
+      <div className="hero-copy reveal"><p className="kicker">Custom floral design · Murray Hill</p><h1>We’ll design a <i>beautiful surprise.</i></h1><p>For Express and Same Day Delivery, call/text our hotline: 571-505-8925.</p><div className="button-row"><Link className="button" href="/contact">Schedule flower delivery <ArrowUpRight size={16}/></Link><Link className="round-link" href="/services" aria-label="Explore services"><ArrowDownRight size={21}/></Link></div></div>
       <div className="hero-visual reveal delay-one">
         <div className="photo-frame hero-frame"><Image src="/images/flowerbar-hero.jpg" alt="A colorful Flower Bar NYC arrangement" fill priority sizes="(max-width: 800px) 92vw, 48vw"/></div>
         <p className="image-caption">Original Flower Bar NYC arrangement · Seasonal stems, arranged daily</p>
